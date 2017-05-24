@@ -1,0 +1,30 @@
+[submodule "Solvents/MEA_ssm"]
+	path = Solvents/MEA_ssm
+	url = git@github.com:CCSI-Toolset/MEA_ssm.git
+[submodule "Solvents/MEA_dm"]
+	path = Solvents/MEA_dm
+	url = git@github.com:CCSI-Toolset/MEA_dm.git
+[submodule "Solvents/-2-mpz"]
+	path = Solvents/-2-mpz
+	url = git@github.com:CCSI-Toolset/-2-mpz.git
+[submodule "Solvents/SolventCrossFlowHX"]
+	path = Solvents/SolventCrossFlowHX
+	url = git@github.com:CCSI-Toolset/SolventCrossFlowHX.git
+[submodule "OtherModels/compressor"]
+	path = OtherModels/compressor
+	url = git@github.com:CCSI-Toolset/compressor.git
+[submodule "OtherModels/membrane_model"]
+	path = OtherModels/membrane_model
+	url = git@github.com:CCSI-Toolset/membrane_model.git
+[submodule "SolidSorbents/bfb_reactor"]
+	path = SolidSorbents/bfb_reactor
+	url = git@github.com:CCSI-Toolset/bfb_reactor.git
+[submodule "SolidSorbents/intcap"]
+	path = SolidSorbents/intcap
+	url = git@github.com:CCSI-Toolset/intcap.git
+[submodule "SolidSorbents/mb_reactor"]
+	path = SolidSorbents/mb_reactor
+	url = git@github.com:CCSI-Toolset/mb_reactor.git
+[submodule "SolidSorbents/bfb_drom"]
+	path = SolidSorbents/bfb_drom
+	url = git@github.com:CCSI-Toolset/bfb_drom.git
