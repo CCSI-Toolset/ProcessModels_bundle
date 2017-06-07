@@ -1,5 +1,5 @@
 # A simple makefile for creating the High Resolution CFD Models bundled product
-VERSION    := 2015.10.00
+VERSION    := `git describe --tags`
 PRODUCT    := Process Models Bundle
 PROD_SNAME := ProcessModels_bundle
 LICENSE    := CCSI_TE_LICENSE_$(PROD_SNAME).txt
