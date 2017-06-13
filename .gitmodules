@@ -4,9 +4,6 @@
 [submodule "Solvents/MEA_dm"]
 	path = Solvents/MEA_dm
 	url = git@github.com:CCSI-Toolset/MEA_dm.git
-[submodule "Solvents/-2-mpz"]
-	path = Solvents/-2-mpz
-	url = git@github.com:CCSI-Toolset/-2-mpz.git
 [submodule "Solvents/SolventCrossFlowHX"]
 	path = Solvents/SolventCrossFlowHX
 	url = git@github.com:CCSI-Toolset/SolventCrossFlowHX.git
@@ -28,3 +25,6 @@
 [submodule "SolidSorbents/bfb_drom"]
 	path = SolidSorbents/bfb_drom
 	url = git@github.com:CCSI-Toolset/bfb_drom.git
+[submodule "Solvents/2-mpz"]
+	path = Solvents/2-mpz
+	url = git@github.com:CCSI-Toolset/2-mpz.git
