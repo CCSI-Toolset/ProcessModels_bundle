@@ -1,17 +1,12 @@
 # A simple makefile for creating the High Resolution CFD Models bundled product
-VERSION    := `git describe --tags`
+VERSION    := $(shell git describe --tags --dirty)
 PRODUCT    := Process Models Bundle
 PROD_SNAME := ProcessModels_bundle
-LICENSE    := CCSI_TE_LICENSE_$(PROD_SNAME).txt
+LICENSE    := LICENSE.md
 PKG_DIR    := CCSI_$(PROD_SNAME)_$(VERSION)
 PACKAGE    := $(PKG_DIR).zip
 
 CATEGORIES := SolidSorbents Solvents OtherModels
-
-# Where Jenkins should checkout ^/projects/common/trunk/
-COMMON     := .ccsi_common
-LEGAL_DOCS := LEGAL \
-           CCSI_TE_LICENSE.txt
 
 TARBALLS := *.tgz
 ZIPFILES := *.zip
@@ -19,8 +14,8 @@ ZIPFILES := *.zip
 # The bundled packages, as found in each category subdir
 SUB_PACKAGES := $(foreach c,$(CATEGORIES), $(wildcard $c/$(TARBALLS) $c/$(ZIPFILES)))
 
-PAYLOAD := docs/*.pdf \
-	LEGAL \
+PAYLOAD := README.md \
+	docs/*.pdf \
 	$(LICENSE)
 
 # Get just the top part (not dirname) of each entry so cp -r does the right thing
@@ -49,30 +44,28 @@ all: $(PACKAGE)
 $(CATEGORIES):
 	@mkdir -p $(PKG_DIR)/$@
 
-	@for tb in $(wildcard $@/$(TARBALLS)); do \
+	@for dir in $(wildcard $@/*); \
+	do \
+	        $(MAKE) -C $$dir clean; \
+		$(MAKE) -C $$dir; \
+	done 
+
+	@for tb in $(wildcard $@/*/$(TARBALLS)); do \
 	  tar -xzf $$tb -C $(PKG_DIR)/$@; \
 	done
 
-	@for zf in $(wildcard $@/$(ZIPFILES)); do \
+	@for zf in $(wildcard $@/*/$(ZIPFILES)); do \
 	  unzip -qo $$zf -d $(PKG_DIR)/$@; \
 	done
 
-$(PACKAGE): $(PAYLOAD) $(CATEGORIES)
+
+
+$(PACKAGE): $(CATEGORIES) $(PAYLOAD)
 	@mkdir -p $(PKG_DIR)
 	@cp -r $(PAYLOAD_TOPS) $(PKG_DIR)
 	@zip -qXr  $(PACKAGE) $(PKG_PAYLOAD)
 	@$(MD5BIN) $(PACKAGE)
-	@rm -rf $(PKG_DIR) $(LEGAL_DOCS) $(LICENSE)
-
-$(LICENSE): CCSI_TE_LICENSE.txt 
-	@sed "s/\[SOFTWARE NAME \& VERSION\]/$(PRODUCT) v.$(VERSION)/" < CCSI_TE_LICENSE.txt > $(LICENSE)
-
-$(LEGAL_DOCS):
-	@if [ -d $(COMMON) ]; then \
-	  cp $(COMMON)/$@ .; \
-	else \
-	  svn -q export ^/projects/common/trunk/$@; \
-	fi
+	@rm -rf $(PKG_DIR) 
 
 clean:
-	@rm -rf $(PACKAGE) $(PKG_DIR) $(LEGAL_DOCS) $(LICENSE)
+	@rm -rf $(PACKAGE) $(PKG_DIR)
