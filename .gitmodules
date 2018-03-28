@@ -4,9 +4,9 @@
 [submodule "Solvents/MEA_dm"]
 	path = Solvents/MEA_dm
 	url = git@github.com:CCSI-Toolset/MEA_dm.git
-[submodule "Solvents/SolventCrossFlowHX"]
-	path = Solvents/SolventCrossFlowHX
-	url = git@github.com:CCSI-Toolset/SolventCrossFlowHX.git
+[submodule "Solvents/SolventCrossflowHX"]
+	path = Solvents/SolventCrossflowHX
+	url = git@github.com:CCSI-Toolset/SolventCrossflowHX.git
 [submodule "OtherModels/compressor"]
 	path = OtherModels/compressor
 	url = git@github.com:CCSI-Toolset/compressor.git
